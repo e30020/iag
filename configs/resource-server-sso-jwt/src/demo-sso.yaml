@@ -16,7 +16,7 @@ server:
     key: "@oct-512-bit.bin"
     
     # The name of the cookie which will be used to store the failover JWE.
-    cookie_name: IAG-JWE
+    cookie_name: jwt
     
     # Should the failover cookie be created as a domain cookie?  A domain
     # cookie will allow the failover cookie to be sent back to any
