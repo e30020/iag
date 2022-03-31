@@ -1,0 +1,33 @@
+# This file contains environment-specific properties to be referenced in
+# IAG configurations.
+
+# In Docker, all these are passed directly as environment variables.
+
+# In OpenShift:
+#   Properties starting with S_ will be created in iag Secret in Openshift
+#   Other properties will be created in iag configMap in OpenShift
+# All are then loaded into environment variables.
+
+############################
+# Common
+
+# Discovery endpoint for OIDC
+OIDC_DISCOVERY_ENDPOINT=https://seljapan01.verify.ibm.com/oidc/endpoint/default/.well-known/openid-configuration
+
+# Client ID for OpenID Connect
+OIDC_CLIENT_ID=7dafeaae-2f3a-4a7f-b586-62ad470d85c8
+
+# Client Secret for OpenID Connect
+S_OIDC_CLIENT_SECRET=zdyKGWbNBb
+
+#############################
+# Demo App SSO
+
+# Demo Application Hostname (for junction creation)
+DEMOAPP_HOSTNAME=172.21.232.86
+
+# Demo Application Port (for junction creation)
+DEMOAPP_PORT=1443
+
+# Demo Application BA Password for trust basis
+S_DEMOAPP_BASIC_PW=something-hard-to-guess
