@@ -57,15 +57,17 @@ identity:
 
 resource_servers:
   - path: "/demo"
-    connection_type: "tcp"
+    connection_type: "ssl"
     transparent_path: false
     servers:
       - host: $DEMOAPP_HOSTNAME
         port: $DEMOAPP_PORT
-    encoding: utf8_uri
-    basic_auth:
-      mode: supply
-      password: $S_DEMOAPP_BASIC_PW
+        ssl:
+          certificate: "@env_files/demoapp.cert.pem"
+    mutual_auth:
+      basic_auth:
+        username: iag
+        password: $S_DEMOAPP_BASIC_PW
     identity_headers:
       attributes:
         - attribute: preferred_username
@@ -83,6 +85,7 @@ resource_servers:
         - attribute: realmName
         - attribute: tenantId
         - attribute: uid
+
 
 logging:
   tracing:
