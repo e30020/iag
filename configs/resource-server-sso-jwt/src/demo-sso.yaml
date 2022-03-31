@@ -11,19 +11,19 @@ server:
 
   # Configuration related to failover support for the IAG.
   failover:
-  
-  # The key which is used to protect the failover JWE cookie.  
-  key: "@oct-512-bit.bin"
-  
-  # The name of the cookie which will be used to store the failover JWE.
-  cookie_name: IAG-JWE
-  
-  # Should the failover cookie be created as a domain cookie?  A domain
-  # cookie will allow the failover cookie to be sent back to any
-  # server within the same domain.  The name of the domain which is
-  # used in the failover cookie is derived from the Host header in
-  # the HTTP request.
-  domain_cookie: false
+    
+    # The key which is used to protect the failover JWE cookie.  
+    key: "@oct-512-bit.bin"
+    
+    # The name of the cookie which will be used to store the failover JWE.
+    cookie_name: IAG-JWE
+    
+    # Should the failover cookie be created as a domain cookie?  A domain
+    # cookie will allow the failover cookie to be sent back to any
+    # server within the same domain.  The name of the domain which is
+    # used in the failover cookie is derived from the Host header in
+    # the HTTP request.
+    domain_cookie: false
 
   #
   # Specify a server certificate to be used by the container.  The server
