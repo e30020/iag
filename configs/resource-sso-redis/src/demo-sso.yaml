@@ -47,7 +47,7 @@ server:
       certificate: "@secret_files/iag.certkey.pem"
 
   #
-  # Enable the inbuilt credential viewer application.  The 'enable_html'
+  # Enable the inbuilt credential viewer application.  oc The 'enable_html'
   # configuration entry will control whether the HTML file is enabled in
   # addition to the JSON API.
   #
