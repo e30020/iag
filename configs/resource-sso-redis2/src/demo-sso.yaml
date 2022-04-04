@@ -9,7 +9,7 @@ version: 21.12
 
 service:
   redis:
-    default_collection: test-collection-session
+    default_collection: redis-a
     key_prefix: iag-test-
     collections:
       - connect_timeout: 20
