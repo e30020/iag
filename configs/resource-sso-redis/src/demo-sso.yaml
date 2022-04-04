@@ -8,7 +8,6 @@ version: 21.12
 #
 
 server:
-
   session:
     cookie_name: sess_cookie
     max_sessions: 20
@@ -16,8 +15,8 @@ server:
     inactive_timeout: 100
     redis:
       enabled: true
-      key_prefix: "iag-"
-      default_collection: test-collection
+      key_prefix: iag-test-
+      default_collection: redis-a
       client_list_cache_lifetime: 10
       concurrent_sessions:
         enabled: true
