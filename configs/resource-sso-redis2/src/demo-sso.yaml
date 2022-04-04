@@ -9,7 +9,7 @@ version: 21.12
 
 service:
   redis:
-    default_collection: redis-a-1
+    default_collection: redis-a
     key_prefix: iag-test-
     collections:
       - connect_timeout: 20
@@ -17,10 +17,10 @@ service:
         idle_timeout: 100
         io_timeout: 300
         max_pooled_connections: 200
-        name: redis-a-2
+        name: test-collection-session
         servers:
         - host: redis-master
-          name: redis-master
+          name: redis-a
           port:  6379
    
 server:
@@ -66,7 +66,7 @@ server:
     redis:
       enabled: true
       key_prefix: iag-test-
-      default_collection: redis-a-3
+      default_collection: redis-a
       client_list_cache_lifetime: 10
       concurrent_sessions:
         enabled: true
