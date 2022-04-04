@@ -66,7 +66,7 @@ server:
     redis:
       enabled: true
       key_prefix: iag-test-
-      default_collection: test-collection-session
+      default_collection: redis-a
       client_list_cache_lifetime: 10
       concurrent_sessions:
         enabled: true
