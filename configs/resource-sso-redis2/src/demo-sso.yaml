@@ -7,7 +7,7 @@ version: 21.12
 # HTTP headers.
 #
 
-service:
+services:
   redis:
     default_collection: redis-a
     key_prefix: iag-test-
