@@ -22,23 +22,7 @@ service:
       - host: redis-master
         name: redis-a-4
         port:  6379
-  session:
-    cookie_name: sess_cookie
-    max_sessions: 20
-    timeout: 600
-    inactive_timeout: 100
-    redis:
-      enabled: true
-      key_prefix: iag-test-
-      default_collection: redis-a-1
-      client_list_cache_lifetime: 10
-      concurrent_sessions:
-        enabled: true
-        prompt_for_displacement: true
-        max_user_sessions: 15
-        user_identity_attribute_name: AZN_CRED_PRINCIPAL_NAME
-    reauth:
-      login_time_window: 10
+
       
 
 server:
@@ -76,7 +60,24 @@ server:
       enable_html: true
 
 
-
+  session:
+    cookie_name: sess_cookie
+    max_sessions: 20
+    timeout: 600
+    inactive_timeout: 100
+    redis:
+      enabled: true
+      key_prefix: iag-test-
+      default_collection: redis-a-1
+      client_list_cache_lifetime: 10
+      concurrent_sessions:
+        enabled: true
+        prompt_for_displacement: true
+        max_user_sessions: 15
+        user_identity_attribute_name: AZN_CRED_PRINCIPAL_NAME
+    reauth:
+      login_time_window: 10
+      
 # Specify an IBM Cloud Identity tenant as the identity provider for the
 # container.  Please note that the values provided below are for illustrative
 # purposes only and don't reflect a real tenant.  A free tenant can be created
