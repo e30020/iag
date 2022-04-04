@@ -7,7 +7,21 @@ version: 21.12
 # HTTP headers.
 #
 
-server:
+service:
+ redis:
+  default_collection: redis-a-2
+  key_prefix: iag-test-
+  collections:
+    - connect_timeout: 20
+      health_check_interval: 200
+      idle_timeout: 100
+      io_timeout: 300
+      max_pooled_connections: 200
+      name: redis-a-3
+      servers:
+      - host: redis-master
+        name: redis-a-4
+        port:  6379
   session:
     cookie_name: sess_cookie
     max_sessions: 20
@@ -25,6 +39,9 @@ server:
         user_identity_attribute_name: AZN_CRED_PRINCIPAL_NAME
     reauth:
       login_time_window: 10
+      
+
+server:
 
   #
   # Specify a server certificate to be used by the container.  The server
@@ -58,21 +75,7 @@ server:
       path_segment: "cred-viewer"
       enable_html: true
 
-service:
- redis:
-  default_collection: redis-a-2
-  key_prefix: iag-test-
-  collections:
-    - connect_timeout: 20
-      health_check_interval: 200
-      idle_timeout: 100
-      io_timeout: 300
-      max_pooled_connections: 200
-      name: redis-a-3
-      servers:
-      - host: redis-master
-        name: redis-a-4
-        port:  6379
+
 
 # Specify an IBM Cloud Identity tenant as the identity provider for the
 # container.  Please note that the values provided below are for illustrative
