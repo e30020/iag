@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ImageStream
+metadata:
+  name: base-centos7
+  namespace: openshift
+spec:
+  dockerImageRepository: docker.io/openshift/base-centos7
+  tags:
+  - from:
+      kind: DockerImage
+      name: docker.io/library/centos:latest
+    name: latest
