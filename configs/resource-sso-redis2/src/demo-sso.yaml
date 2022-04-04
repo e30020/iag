@@ -9,7 +9,7 @@ version: 21.12
 
 service:
  redis:
-  default_collection: redis-a-2
+  default_collection: redis-a-1
   key_prefix: iag-test-
   collections:
     - connect_timeout: 20
@@ -66,7 +66,7 @@ server:
     redis:
       enabled: true
       key_prefix: iag-test-
-      default_collection: redis-a-2
+      default_collection: redis-a-3
       client_list_cache_lifetime: 10
       concurrent_sessions:
         enabled: true

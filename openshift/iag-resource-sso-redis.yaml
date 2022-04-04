@@ -204,7 +204,7 @@ parameters:
   - displayName: GitHub Context Directory
     description: Directory within GitHub repo where config is found
     name: GITHUB_CONTEXT
-    value: /configs/resource-sso-redis
+    value: /configs/resource-sso-redis2
   - displayName: Secret Name
     description: (Existing) Secret containing sensitive files and variables referenced in config from repo.
     name: SECRET_NAME
