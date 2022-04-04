@@ -17,13 +17,11 @@ service:
       idle_timeout: 100
       io_timeout: 300
       max_pooled_connections: 200
-      name: redis-a-3
+      name: redis-a-2
       servers:
       - host: redis-master
-        name: redis-a-4
+        name: redis-master
         port:  6379
-
-      
 
 server:
 
