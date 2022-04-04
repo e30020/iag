@@ -68,7 +68,7 @@ service:
       idle_timeout: 100
       io_timeout: 300
       max_pooled_connections: 200
-      name: test-collection-session
+      name: redis-a
       servers:
       - host: redis-master
         name: redis-a
