@@ -16,6 +16,7 @@ services:
         health_check_interval: 200
         idle_timeout: 100
         io_timeout: 300
+        matching_host: iag-iag-ishikawa-redis.mycluster-security-tok05-c82dcc5867b41450588f49284670f9a8-0000.jp-tok.containers.appdomain.cloud
         max_pooled_connections: 200
         name: test-collection-session
         servers:
