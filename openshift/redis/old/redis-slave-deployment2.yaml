@@ -20,14 +20,7 @@ spec:
     spec:
       containers:
       - name: slave
-        image: redis:3.2.0-alpine
-        resources:
-          requests:
-            cpu: 100m
-            memory: 100Mi
-        env:
-        - name: GET_HOSTS_FROM
-          value: dns
+        image: redis:latest
         command:
             - "redis-server"
         args:
@@ -36,5 +29,18 @@ spec:
             - "6379"
             - "--protected-mode"
             - "no"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        env:
+        - name: GET_HOSTS_FROM
+          value: dns
         ports:
         - containerPort: 6379
+        volumeMounts:
+            - mountPath: /redis-master-data
+              name: data
+      volumes:
+          - name: data
+            emptyDir: {}

@@ -7,24 +7,7 @@ version: 21.12
 # HTTP headers.
 #
 
-service:
- redis:
-  default_collection: redis-a-2
-  key_prefix: iag-test-
-  collections:
-    - connect_timeout: 20
-      health_check_interval: 200
-      idle_timeout: 100
-      io_timeout: 300
-      max_pooled_connections: 200
-      name: redis-a-2
-      servers:
-      - host: redis-master
-        name: redis-master
-        port:  6379
-
 server:
-
   #
   # Specify a server certificate to be used by the container.  The server
   # certificate was created using an openssl command:
@@ -47,7 +30,7 @@ server:
       certificate: "@secret_files/iag.certkey.pem"
 
   #
-  # Enable the inbuilt credential viewer application.  oc The 'enable_html'
+  # Enable the inbuilt credential viewer application.  The 'enable_html'
   # configuration entry will control whether the HTML file is enabled in
   # addition to the JSON API.
   #
@@ -57,25 +40,7 @@ server:
       path_segment: "cred-viewer"
       enable_html: true
 
-
-  session:
-    cookie_name: sess_cookie
-    max_sessions: 20
-    timeout: 600
-    inactive_timeout: 100
-    redis:
-      enabled: true
-      key_prefix: iag-test-
-      default_collection: redis-a-2
-      client_list_cache_lifetime: 10
-      concurrent_sessions:
-        enabled: true
-        prompt_for_displacement: true
-        max_user_sessions: 15
-        user_identity_attribute_name: AZN_CRED_PRINCIPAL_NAME
-    reauth:
-      login_time_window: 10
-      
+#
 # Specify an IBM Cloud Identity tenant as the identity provider for the
 # container.  Please note that the values provided below are for illustrative
 # purposes only and don't reflect a real tenant.  A free tenant can be created
@@ -117,6 +82,8 @@ resource_servers:
         - attribute: uid
 
 logging:
+  request_log:
+    format: "%h %u %a %t %m %r %s %b"
   tracing:
     - file_name: /var/iag/trace.log
       component: pdweb.debug
@@ -127,3 +94,11 @@ logging:
     - file_name: /var/iag/snoop.log
       component: pdweb.snoop
       level: 9
+  transaction:
+    file_name: trans.log
+    max_file_size: 1024
+    max_files: 5
+    compress: false
+  components:
+    - audit.authn
+    - audit.azn

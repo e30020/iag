@@ -20,12 +20,7 @@ spec:
     spec:
       containers:
       - name: master
-        image: redis:latest
-        command:
-            - "redis-server"
-        args:
-            - "--protected-mode"
-            - "no"
+        image: k8s.gcr.io/redis:e2e
         resources:
           requests:
             cpu: 100m

@@ -20,7 +20,15 @@ spec:
     spec:
       containers:
       - name: slave
-        image: gcr.io/google_samples/gb-redisslave:v3
+        image: redis:latest
+        command:
+            - "redis-server"
+        args:
+            - "--slaveof"
+            - "redis-master"
+            - "6379"
+            - "--protected-mode"
+            - "no"
         resources:
           requests:
             cpu: 100m

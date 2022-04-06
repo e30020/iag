@@ -20,16 +20,21 @@ spec:
     spec:
       containers:
       - name: master
-        image: redis:3.2.0-alpine
-
-        resources:
-          requests:
-            cpu: 100m
-            memory: 100Mi
+        image: redis:latest
         command:
             - "redis-server"
         args:
             - "--protected-mode"
             - "no"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
         ports:
         - containerPort: 6379
+        volumeMounts:
+            - mountPath: /redis-master-data
+              name: data
+      volumes:
+          - name: data
+            emptyDir: {}
