@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Template
 metadata:
   creationTimestamp: null
-  name: ibm-app-gateway-resource-server-jwe
+  name: ibm-app-gateway-resource-server-logging
   annotations:
     openshift.io/display-name: IBM Application Gateway (Build from Repo)
     iconClass: icon-sso
