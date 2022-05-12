@@ -24,7 +24,7 @@ server:
   # If no certificate is specified a self-signed certificate will be
   # automatically created and used by the container.
   #
-  worker_threads: 100
+  #worker_threads: 100
   
   ssl:
     front_end:
