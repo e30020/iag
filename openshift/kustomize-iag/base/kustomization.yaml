@@ -1,0 +1,15 @@
+resources:
+- deployment.yaml
+- service.yaml
+- route.yaml
+- sealed-secret.yaml
+configMapGenerator:
+  - name: iag-config
+    files:
+      - files/demo-sso.yaml
+  - name: iag
+    literals:
+    - DEMOAPP_HOSTNAME=resource-server.au-syd.mybluemix.net
+    - DEMOAPP_PORT="443"
+    - OIDC_CLIENT_ID=7dafeaae-2f3a-4a7f-b586-62ad470d85c8
+    - OIDC_DISCOVERY_ENDPOINT=https://seljapan01.verify.ibm.com/oidc/endpoint/default/.well-known/openid-configuration

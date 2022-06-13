@@ -1,0 +1,7 @@
+bases:
+- ../../base
+patches:
+- deployment.yaml
+- route.yaml
+- configmap.yaml
+namespace: iag-kustomize

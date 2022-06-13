@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: iag
+    labels:
+      app: iag
+      name: iag
+spec:
+    progressDeadlineSeconds: 600
+    replicas: 2
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: iag
+    strategy:
+      rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 1
+      type: RollingUpdate
+    template:
+      metadata:
+        labels:
+          app: iag
+          name: iag
+      spec:
+        serviceAccountName: default
+        affinity:
+          podAntiAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                    - iag
+                topologyKey: kubernetes.io/hostname
+        containers:
+        - env:
+          - name: LANG
+            value: ja
+          envFrom:
+            - configMapRef:
+                name: iag
+            - secretRef:
+                name: iag
+          image: docker.io/ibmcom/ibm-application-gateway:21.12
+          imagePullPolicy: IfNotPresent
+          name: iag
+          ports:
+          - containerPort: 8443
+            protocol: TCP
+          resources: 
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          livenessProbe:
+            exec:
+              command:
+              - /sbin/health_check.sh
+            initialDelaySeconds: 120
+            periodSeconds: 10
+          readinessProbe:
+            exec:
+              command:
+              - /sbin/health_check.sh
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          volumeMounts:
+          - mountPath: /var/iag/config
+            name: iag-config
+          - mountPath: /var/iag/config/secret_files
+            name: iag-secret-files
+          - mountPath: /var/iag/config/env_files
+            name: iag-env-files
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: iag-config
+          configMap:
+            name: iag-config
+        - name: iag-secret-files
+          secret:
+            secretName: iag
+        - name: iag-env-files
+          configMap:
+            name: iag

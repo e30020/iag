@@ -1,0 +1,18 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    name: iag
+    app: iag
+  name: iag
+spec:
+  port:
+    targetPort: iag
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: passthrough
+  to:
+    kind: Service
+    name: iag
+    weight: 100
+  wildcardPolicy: None

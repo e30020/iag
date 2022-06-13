@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iag
+spec:
+  replicas: 2
+  template:
+    spec:
+      image: docker.io/ibmcom/ibm-application-gateway:21.06
+      containers:
+        - name: iag
+          resources: 
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              memory: 256Mi
