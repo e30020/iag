@@ -62,7 +62,7 @@ resource_servers:
       - host: $DEMOAPP_HOSTNAME
         port: $DEMOAPP_PORT
         ssl:
-          certificate: "@secret_files/au-syd-mybluemix-net.pem"
+          certificate: "@au-syd-mybluemix-net.pem"
     identity_headers:
       attributes:
         - attribute: preferred_username
