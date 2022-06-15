@@ -200,7 +200,7 @@ parameters:
   - displayName: GitHub Repository
     description: GitHub repository where configuration is stored
     name: GITHUB_REPO
-    value: https://github.com/jonpharry/iag
+    value: https://github.com/e30020/iag
   - displayName: GitHub Context Directory
     description: Directory within GitHub repo where config is found
     name: GITHUB_CONTEXT
