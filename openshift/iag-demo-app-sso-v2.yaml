@@ -117,13 +117,15 @@ objects:
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           livenessProbe:
-            tcpSocket:
-              port: 8443
+            exec:
+              command:
+              - /sbin/health_check.sh
             initialDelaySeconds: 120
             periodSeconds: 10
           readinessProbe:
-            tcpSocket:
-              port: 8443
+            exec:
+              command:
+              - /sbin/health_check.sh
             initialDelaySeconds: 5
             periodSeconds: 10
           volumeMounts:
