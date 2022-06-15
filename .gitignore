@@ -6,4 +6,6 @@ node_modules
 common/secret_files/*
 common/env_files/*
 docker/files/*
+openshift/kustomize-iag/base/files/*.pem
+openshift/kustomize-iag/base/files/secret.yaml
 !*.keep
