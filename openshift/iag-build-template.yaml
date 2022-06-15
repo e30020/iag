@@ -117,15 +117,13 @@ objects:
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           livenessProbe:
-            exec:
-              command:
-              - /sbin/health_check.sh
+            tcpSocket:
+              port: 8443
             initialDelaySeconds: 120
             periodSeconds: 10
           readinessProbe:
-            exec:
-              command:
-              - /sbin/health_check.sh
+            tcpSocket:
+              port: 8443
             initialDelaySeconds: 5
             periodSeconds: 10
           volumeMounts:
@@ -202,7 +200,7 @@ parameters:
   - displayName: GitHub Repository
     description: GitHub repository where configuration is stored
     name: GITHUB_REPO
-    value: https://github.com/jonpharry/iag
+    value: https://github.com/e30020/iag
   - displayName: GitHub Context Directory
     description: Directory within GitHub repo where config is found
     name: GITHUB_CONTEXT

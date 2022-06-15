@@ -99,7 +99,6 @@ logging:
     max_file_size: 1024
     max_files: 5
     compress: false
-  json_logging: true
   components:
     - audit.authn
     - audit.azn
