@@ -8,14 +8,14 @@ distinguished_name = mydn
 req_extensions     = myreqextensions
 
 [ mydn ]
-commonName       = appdomain.cloud
+commonName       = www.iamlab.ibm.com
 countryName      = US
 organizationName = IAMLAB Test Only
 
 [ myattributes ]
 
 [ alternatenames ]
-DNS.1            = appdomain.cloud
+DNS.1            = www.iamlab.ibm.com
 
 [ myreqextensions ]
 
